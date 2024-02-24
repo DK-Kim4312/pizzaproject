@@ -4,7 +4,7 @@ import "./Key.css"; // Import CSS for styling
 const Key = () => {
   return (
     <div className="key">
-      <div className="gradient-bar"></div>
+      <div className="gradient-bar cover"></div>
       <div className="annotations">
         <div>0%</div>
         <div>25%</div>

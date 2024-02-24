@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .react-simple-maps geography:focus {
+  outline: none;
+} */
+
+/* .react-simple-maps .rsm-geography:focus {
+  outline: none !important;
+} */

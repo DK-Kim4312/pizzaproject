@@ -1,0 +1,19 @@
+.key {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .gradient-bar {
+    width: 500px;
+    height: 20px;
+    background: linear-gradient(to right, rgb(42,53,77,.2), rgb(42,53,77,1));
+    border-radius: .3rem;
+  }
+  
+  .annotations {
+    display: flex;
+    width:500px !important;
+    justify-content: space-between;
+    width: 200px;
+  }

@@ -17,7 +17,12 @@ const App = () => (
               <Geography
                 key={geo.rsmKey}
                 geography={geo}
-                fill="#97bbcc"
+                fill="#2a354d"
+                style={{
+                  default: { outline: "none" },
+                  hover: { outline: "none" },
+                  pressed: { outline: "none" },
+                }}
               />
             </a>
           ))

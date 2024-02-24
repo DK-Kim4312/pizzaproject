@@ -4,10 +4,6 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simp
 import Sidebar from './Sidebar/Sidebar';
 import "./index.css";
 
-const red = 42;
-const green = 53;
-const blue = 77;
-
 const getRandom = () => Math.random() * 0.8;
 
 const App = () => (

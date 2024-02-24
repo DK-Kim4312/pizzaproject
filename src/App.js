@@ -7,11 +7,19 @@ import "./index.css";
 const App = () => (
   <div>
     <Sidebar />
-    <ComposableMap>
+    <ComposableMap
+      projection="geoMercator"
+    >
       <Geographies geography="/features.json">
         {({ geographies }) =>
           geographies.map((geo) => (
-            <Geography key={geo.rsmKey} geography={geo} />
+            <a key={geo.rsmKey} href={`/${geo.properties.name}`}>
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                fill="#97bbcc"
+              />
+            </a>
           ))
         }
       </Geographies>

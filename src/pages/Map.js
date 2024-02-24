@@ -55,7 +55,7 @@ const markers = [
     { markerOffset: 5, name: "Santiago", coordinates: [-70.6693, -33.4489] },
     { markerOffset: 5, name: "Philadelphia", coordinates: [-75.1652, 39.9526] },
     { markerOffset: 5, name: "Boston", coordinates: [-71.0589, 42.3601] }
-  ];
+];
 
 const Map = () => (
     <div>
@@ -68,7 +68,7 @@ const Map = () => (
                 <Geographies geography="/features.json">
                     {({ geographies }) =>
                         geographies.map((geo) => (
-                            <a key={geo.rsmKey} href={`/${geo.properties.name}`}>
+                            <a key={geo.rsmKey} href={`/${geo.properties.name.trim()}`}>
                                 <Geography
                                     key={geo.rsmKey}
                                     geography={geo}

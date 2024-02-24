@@ -12,7 +12,7 @@ const App = () => (
     <Sidebar/>
     <Routes>
       <Route path="/" element={<Map/>}></Route>
-      <Route path="/UnitedStates" element={<div><States/><div>Hello</div></div>}></Route>
+      <Route path="/United States" element={<div><States/><div>Hello</div></div>}></Route>
     </Routes>
   </BrowserRouter>
 );

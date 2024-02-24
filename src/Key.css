@@ -7,7 +7,7 @@
   .gradient-bar {
     width: 500px;
     height: 20px;
-    background: linear-gradient(to right, rgb(42,53,77,.2), rgb(42,53,77,1)); /* Change colors as needed */
+    background: linear-gradient(to right, rgb(42,53,77,.2), rgb(42,53,77,1));
     border-radius: .3rem;
   }
   

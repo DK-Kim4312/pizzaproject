@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-
+import Sidebar from './Sidebar/Sidebar';
 import "./index.css";
 
 const App = () => (
   <div>
+    <Sidebar />
     <ComposableMap
       projection="geoMercator"
-      // width={window.innerWidth * .8}
-      // height={window.innerHeight * .8}
     >
       <Geographies geography="/features.json">
         {({ geographies }) =>

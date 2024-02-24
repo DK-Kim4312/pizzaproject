@@ -12,6 +12,16 @@ code {
     monospace;
 }
 
+html {
+  font-family: system-ui, sans-serif;
+  font-size: 1.25rem;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 /* .react-simple-maps geography:focus {
   outline: none;
 } */

@@ -6,11 +6,21 @@ import "./index.css";
 
 const App = () => (
   <div>
-    <ComposableMap>
+    <ComposableMap
+      projection="geoMercator"
+      // width={window.innerWidth * .8}
+      // height={window.innerHeight * .8}
+    >
       <Geographies geography="/features.json">
         {({ geographies }) =>
           geographies.map((geo) => (
-            <Geography key={geo.rsmKey} geography={geo} />
+            <a key={geo.rsmKey} href={`/${geo.properties.name}`}>
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                fill="#97bbcc"
+              />
+            </a>
           ))
         }
       </Geographies>

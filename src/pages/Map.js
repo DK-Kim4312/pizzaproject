@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { ComposableMap, Marker, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import Sidebar from '../Sidebar/Sidebar';
-import "./index.css";
+import "../index.css";
 
 const getRandom = () => Math.random() * 0.8;
 

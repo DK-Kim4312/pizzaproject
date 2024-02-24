@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ComposableMap, Marker, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
-import Sidebar from '../Sidebar/Sidebar';
 import "../index.css";
 
-const getRandom = () => Math.random() * 0.8;
+export const getRandom = () => Math.random() * 0.8;
 
 const markers = [
     { markerOffset: 5, name: "Tokyo", coordinates: [139.6917, 35.6895] },
@@ -60,7 +59,6 @@ const markers = [
 
 const Map = () => (
     <div>
-        <Sidebar />
         <ComposableMap
             projection="geoMercator"
             minZoom={.8}

@@ -15,8 +15,10 @@ const App = () => (
     <Sidebar />
     <ComposableMap
       projection="geoMercator"
+      minZoom={.8}
+      maxZoom={30}
     >
-      <ZoomableGroup center={[0, 0]} zoom={1}>
+      <ZoomableGroup center={[0, 0]} zoom={.9}>
         <Geographies geography="/features.json">
           {({ geographies }) =>
             geographies.map((geo) => (
@@ -24,13 +26,15 @@ const App = () => (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
+                  title={geo.properties.name}
                   fill={`rgb(42,53,77,${getRandom() + .2})`}
                   style={{
                     default: { outline: "none" },
                     hover: { outline: "none" },
                     pressed: { outline: "none" },
-                  }}
-                />
+                  }}>
+                  <title>{geo.properties.name}</title>
+                  </Geography>
               </a>
             ))
           }

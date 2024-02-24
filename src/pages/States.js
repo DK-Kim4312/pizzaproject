@@ -36,9 +36,14 @@ const States = () => {
                 stroke="#FFF"
                 geography={geo}
                 fill="#DDD"
+                style={{
+                  default: { outline: "none" },
+                  hover: { outline: "none" },
+                  pressed: { outline: "none" },
+                }}
               />
             ))}
-            {geographies.map(geo => {
+            {/* {geographies.map(geo => {
               const centroid = geoCentroid(geo);
               const cur = allStates.find(s => s.val === geo.id);
               return (
@@ -65,7 +70,7 @@ const States = () => {
                     ))}
                 </g>
               );
-            })}
+            })} */}
           </>
         )}
       </Geographies>

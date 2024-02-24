@@ -4,6 +4,12 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simp
 import Sidebar from './Sidebar/Sidebar';
 import "./index.css";
 
+const red = 42;
+const green = 53;
+const blue = 77;
+
+const getRandom = () => Math.random() * 0.8;
+
 const App = () => (
   <div>
     <Sidebar />
@@ -18,7 +24,7 @@ const App = () => (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill="#2a354d"
+                  fill={`rgb(42,53,77,${getRandom() + .2})`}
                   style={{
                     default: { outline: "none" },
                     hover: { outline: "none" },

@@ -22,6 +22,11 @@ svg {
   vertical-align: middle;
 }
 
+path:hover {
+  fill: #182238;
+}
+
+
 /* .react-simple-maps geography:focus {
   outline: none;
 } */

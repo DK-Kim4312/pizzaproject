@@ -6,11 +6,8 @@ const Key = () => {
     <div className="key">
       <div className="gradient-bar cover"></div>
       <div className="annotations">
-        <div>0%</div>
-        <div>25%</div>
-        <div>50%</div>
-        <div>75%</div>
-        <div>100%</div>
+        <div>Min</div> {/* Placeholder Value for Min Value */}
+        <div>Max</div> {/* Placeholder Value for Max Value */}
       </div>
     </div>
   );

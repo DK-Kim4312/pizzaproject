@@ -5,7 +5,8 @@ import {
   Geographies,
   Geography,
   Marker,
-  Annotation
+  Annotation,
+  ZoomableGroup
 } from "react-simple-maps";
 
 import allStates from "./allstates.json";
@@ -13,6 +14,8 @@ import allStates from "./allstates.json";
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const markers = [
+  { "markerOffset": 5, "name": "New York", "coordinates": [-74.0060, 40.7128] },
+  { "markerOffset": 5, "name": "Los Angeles", "coordinates": [-118.2437, 34.0522] },
   { "markerOffset": 5, "name": "New York", "coordinates": [-74.0060, 40.7128] },
   { "markerOffset": 5, "name": "Los Angeles", "coordinates": [-118.2437, 34.0522] },
   { "markerOffset": 5, "name": "Chicago", "coordinates": [-87.6298, 41.8781] },
@@ -273,7 +276,7 @@ const markers = [
   { "markerOffset": 5, "name": "Naperville", "coordinates": [-88.162, 41.7508] },
   { "markerOffset": 5, "name": "Binghamton", "coordinates": [-75.9143, 42.0987] },
   { "markerOffset": 5, "name": "Bellevue", "coordinates": [-122.2007, 47.6104] },
-  { "markerOffset": 5, "name": "Topeka", "coordinates": [-95.689] },
+  { "markerOffset": 5, "name": "Topeka", "coordinates": [-95.689, 39.0473] },
   { "markerOffset": 5, "name": "Elkhart", "coordinates": [-85.9767, 41.681] },
   { "markerOffset": 5, "name": "Beaumont", "coordinates": [-94.1266, 30.0802] },
   { "markerOffset": 5, "name": "Paterson", "coordinates": [-74.1718, 40.9168] },
@@ -1086,7 +1089,10 @@ const markers = [
   { "markerOffset": 5, "name": "Wrightsville", "coordinates": [-76.7233, 39.9356] },
   { "markerOffset": 5, "name": "Bulverde", "coordinates": [-98.4521, 29.7457] },
   { "markerOffset": 5, "name": "Iola", "coordinates": [-95.4023, 37.9232] }
-]
+];
+// const markers = [  
+
+// ]
 
 const offsets = {
   VT: [50, -8],
@@ -1103,66 +1109,34 @@ const offsets = {
 const States = () => {
   return (
     <ComposableMap projection="geoAlbersUsa">
-      <Geographies geography={geoUrl}>
-        {({ geographies }) => (
-          <>
-            {geographies.map(geo => (
-              <Geography
-                key={geo.rsmKey}
-                stroke="#FFF"
-                geography={geo}
-                fill="#DDD"
-                style={{
-                  default: { outline: "none" },
-                  hover: { outline: "none" },
-                  pressed: { outline: "none" }, 
-                }}>
-                <title>{geo.properties.name}</title>
+      <ZoomableGroup center={[0, 0]} zoom={1}>
+        <Geographies geography={geoUrl}>
+          {({ geographies }) => (
+            <>
+              {geographies.map(geo => (
+                <Geography
+                  key={geo.rsmKey}
+                  stroke="#FFF"
+                  geography={geo}
+                  fill="#DDD"
+                  style={{
+                    default: { outline: "none" },
+                    hover: { outline: "none" },
+                    pressed: { outline: "none" },
+                  }}>
+                  <title>{geo.properties.name}</title>
                 </Geography>
-            ))}
-            {/* {geographies.map(geo => {
-              const centroid = geoCentroid(geo);
-              const cur = allStates.find(s => s.val === geo.id);
-              return (
-                <g key={geo.rsmKey + "-name"}>
-                  {cur &&
-                    centroid[0] > -160 &&
-                    centroid[0] < -67 &&
-                    (Object.keys(offsets).indexOf(cur.id) === -1 ? (
-                      <Marker coordinates={centroid}>
-                        <text y="2" fontSize={14} textAnchor="middle">
-                          {cur.id}
-                        </text>
-                      </Marker>
-                    ) : (
-                      <Annotation
-                        subject={centroid}
-                        dx={offsets[cur.id][0]}
-                        dy={offsets[cur.id][1]}
-                      >
-                        <text x={4} fontSize={14} alignmentBaseline="middle">
-                          {cur.id}
-                        </text>
-                      </Annotation>
-                    ))}
-                </g>
-              );
-            })} */}
-          </>
-        )}
-      </Geographies>
-      {/* {markers.map(({ name, coordinates, markerOffset }) => (
-        <Marker key={name} coordinates={coordinates}>
-          <circle r={1} fill="#000000" strokeWidth={1} />
-          <text
-            textAnchor="middle"
-            y={markerOffset}
-            style={{ fontFamily: "system-ui", fill: "#EDEDED", "font-size": ".2rem" }}
-          >
-            {name}
-          </text>
-        </Marker>
-      ))} */}
+              ))}
+            </>
+          )}
+        </Geographies>
+        {markers.map(({ name, coordinates, markerOffset }) => (
+          <Marker key={name} coordinates={coordinates}>
+            <circle r={.3} fill="#000000" strokeWidth={.3} />
+            <title>{name}</title>
+          </Marker>
+        ))}
+      </ZoomableGroup>
     </ComposableMap>
   );
 };

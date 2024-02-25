@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import { ComposableMap, Marker, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import "../index.css";
 import map from './features.json';
+import Sidebar from '../Sidebar/Sidebar';
+import Key from '../Key/Key';
+
 
 export const getRandom = () => Math.random() * 0.8;
 
@@ -60,7 +63,7 @@ const Map = () => {
     const [alphaValues, setAlphaValues] = useState({});
 
     const updateAlphaValue = (countryName, alpha) => {
-        if(alphaValues[countryName] != null) {
+        if (alphaValues[countryName] != null) {
             setAlphaValues((prevValues) => ({
                 ...prevValues, [countryName]: alpha
             }));
@@ -86,6 +89,7 @@ const Map = () => {
 
     return (
         <div>
+            <Sidebar />
             <ComposableMap
                 projection="geoMercator"
             >
@@ -125,6 +129,7 @@ const Map = () => {
                     ))}
                 </ZoomableGroup>
             </ComposableMap>
+            <Key/>
         </div>
     )
 };

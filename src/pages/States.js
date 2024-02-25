@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { geoCentroid } from "d3-geo";
+import Sidebar from "../Sidebar/Sidebar";
+import Key from "../Key/Key";
 import {
   ComposableMap,
   Geographies,
@@ -1197,7 +1199,7 @@ const States = () => {
         </Geographies>
         {filteredMarkers.map(({ name, coordinates, markerOffset }) => (
           <Marker key={name} coordinates={coordinates}>
-            <circle r={.6} fill="#000000" strokeWidth={.6} />
+            <circle r={.6} fill="#000000" strokeWidth={.8} />
             <title>{name}</title>
           </Marker>
         ))}

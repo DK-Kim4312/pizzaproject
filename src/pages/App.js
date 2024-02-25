@@ -7,7 +7,7 @@ import Map from './Map';
 import States from './States';
 import Table from './Table';
 import { useParams } from "react-router-dom";
-
+import About from "./About"
 
 
 
@@ -20,6 +20,7 @@ function App() {
         <Route path="/United States" element={<States/>}></Route>
         <Route path="/table" element={<Table/>}></Route>
         <Route path="/:id" element={<Table/>}></Route>
+        <Route path="/about" element={<About/>}></Route>
       </Routes>
     </BrowserRouter>
   );

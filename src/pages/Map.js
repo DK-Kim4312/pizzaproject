@@ -59,11 +59,20 @@ const Map = () => {
     const [alphaValues, setAlphaValues] = useState({});
 
     const updateAlphaValue = (countryName, alpha) => {
-        setAlphaValues(prevValues => ({
-            ...prevValues,
-            [countryName]: alpha
-        }));
+        if(alphaValues[countryName] != null) {
+            setAlphaValues((prevValues) => ({
+                ...prevValues, [countryName]: alpha
+            }));
+        } else {
+            alphaValues[countryName] = alpha;
+        }
     };
+    // const updateAlphaValue = (countryName, alpha) => {
+    //     setAlphaValues((prevValues) => ({
+    //         ...prevValues,
+    //         [countryName]: alpha
+    //     }));
+    // };
 
     useEffect(() => {
         for (const key in map.objects.world.geometries) {
@@ -75,6 +84,7 @@ const Map = () => {
         }
         window.setAlphaValues = setAlphaValues;
         window.updateAlphaValue = updateAlphaValue;
+        window.alphaValues = alphaValues;
     }, []);
 
     console.log("THESE ARE THE ALPHA VALUES " + alphaValues);

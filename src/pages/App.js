@@ -17,14 +17,12 @@ function App() {
   const { id } = useParams();
   return (
     <BrowserRouter>
-    <Sidebar/>
       <Routes>
-        <Route path="/" element={<Map/>}></Route>
-        <Route path="/United States" element={<States/>}></Route>
+        <Route path="/" element={<div><Sidebar/><Map/><Key/></div>}></Route>
+        <Route path="/United States" element={<div><Sidebar/><States/><Key/></div>}></Route>
         <Route path="/table" element={<Table/>}></Route>
         <Route path="/:id" element={<Table/>}></Route>
       </Routes>
-      <Key/>
     </BrowserRouter>
   );
 };

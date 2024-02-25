@@ -1,10 +1,11 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useMemo, useContext } from "react";
 import ReactDOM from "react-dom";
 import { ComposableMap, Marker, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import "../index.css";
 import map from './features.json';
 import Sidebar from '../Sidebar/Sidebar';
 import Key from '../Key/Key';
+import { GlobalContext } from "../context/GlobalContext";
 
 
 export const getRandom = () => Math.random() * 0.8;
@@ -60,33 +61,39 @@ const markers = [
 
 
 const Map = () => {
-    const [alphaValues, setAlphaValues] = useState({});
+    const { alphaValues } = useContext(GlobalContext);
+    const [localAlphaValues, setLocalAlphaValues] = useState({});
 
-    const updateAlphaValue = (countryName, alpha) => {
-        if (alphaValues[countryName] != null) {
-            setAlphaValues((prevValues) => ({
-                ...prevValues, [countryName]: alpha
-            }));
-        } else {
-            alphaValues[countryName] = alpha;
-        }
-    };
-    
     useEffect(() => {
-        for (const key in map.objects.world.geometries) {
-            const geo = map.objects.world.geometries[key];
-            if (geo.properties && geo.properties.name) {
-                const name = geo.properties.name;
-                updateAlphaValue(name, 0);
+        const fetchAlphaValues = async () => {
+            try {
+                const alphaValuesData = await alphaValues;
+                setLocalAlphaValues(alphaValuesData);
+            } catch (error) {
+                console.error("Error fetching alpha values:", error);
             }
+        };
+
+        fetchAlphaValues();
+    }, [alphaValues]);
+
+
+    function formatAlphaValues(geo_name) {
+        if (localAlphaValues.length === 0) {
+            return 0;
+        } else if (localAlphaValues === undefined) {
+            return 0;
+        } else if (localAlphaValues === null) {
+            return 0;
+        } else if (localAlphaValues[geo_name] === undefined) {
+            return 0;
+        } else if (localAlphaValues[geo_name] === null) {
+            return 0;
+        } else {
+            return localAlphaValues[geo_name];
         }
-        window.setAlphaValues = setAlphaValues;
-        window.updateAlphaValue = updateAlphaValue;
-        window.alphaValues = alphaValues;
-    }, []);
 
-    console.log("THESE ARE THE ALPHA VALUES " + alphaValues);
-
+    }
     return (
         <div>
             <Sidebar />
@@ -102,7 +109,7 @@ const Map = () => {
                                         key={geo.rsmKey}
                                         geography={geo}
                                         title={geo.properties.name}
-                                        fill={`rgb(42,53,77,${(alphaValues[geo.properties.name] * .8) + .2})`}
+                                        fill={`rgb(42,53,77,${(formatAlphaValues(geo.properties.name)) + .2})`}
                                         style={{
                                             default: { outline: "none" },
                                             hover: { outline: "none" },
@@ -129,9 +136,10 @@ const Map = () => {
                     ))}
                 </ZoomableGroup>
             </ComposableMap>
-            <Key/>
+            <Key />
         </div>
     )
+
 };
 
 export default Map;

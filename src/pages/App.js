@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Map/>}></Route>
         <Route path="/United States" element={<States/>}></Route>
         <Route path="/table" element={<Table/>}></Route>
-        <Route path="/:id" element={<Table country={id}/>}></Route>
+        <Route path="/:id" element={<Table/>}></Route>
       </Routes>
     </BrowserRouter>
   );

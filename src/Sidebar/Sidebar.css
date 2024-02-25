@@ -21,11 +21,14 @@
     background-color: #555;
     color: #fff;
     border: none;
-    padding: 6.2px;
+    padding: 4px;
     width: 100%;
     cursor: pointer;
     transition: transform 0.5s ease;
     align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   }
   
   .tabs-content {

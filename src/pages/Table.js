@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './Table.css';
-import { xdictArray, ingredientToXdict, xdictToIngredient } from './xdict.js';
+import { xdictArray, ingredientToXdict, xdictToIngredient, uniqueCountries } from './util.js';
 
 /**
  *  Table component that contains a form and a table area. 
@@ -69,9 +69,13 @@ const Table = (props) => {
                 </div>
                 <div className="selector">
                     <label htmlFor="country">Country</label>
-                    <select id="country" onChange={(e) => setCountry(e.target.value)}>
+                    <select id="country" value={country} onChange={(e) => setCountry(e.target.value)}>
                         <option value="all">All</option>
-                        <option value="United States">United States</option>
+                        {
+                            uniqueCountries().map((country, index) => (
+                                <option key={index} value={country}>{country}</option>
+                            ))
+                        }
                     </select>
                 </div>
 

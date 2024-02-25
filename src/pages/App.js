@@ -8,8 +8,8 @@ import Map from './Map';
 import States from './States';
 import Table from './Table';
 import { useParams } from "react-router-dom";
+import About from "./About"
 import Sidebar from "../Sidebar/Sidebar";
-
 
 
 
@@ -21,9 +21,15 @@ function App() {
         <Route path="/" element={<div><Sidebar/><Map/><Key/></div>}></Route>
         <Route path="/United States" element={<div><Sidebar/><States/><Key/></div>}></Route>
         <Route path="/table" element={<Table/>}></Route>
-        <Route path="/:id" element={<Table/>}></Route>
+        <Route path="/table/:id" element={<RouteWrapper component={Table} />} />
+        <Route path="/:id" element={<RouteWrapper component={Table} />} />
+        <Route path="/about" element={<About/>}></Route>
       </Routes>
     </BrowserRouter>
   );
+  function RouteWrapper({ component: Component }) {
+    const { id } = useParams(); // Now we are within the routing context and useParams works
+    return <Component id={id} />; // Pass the id as a prop to the component
+  }
 };
 export default App;

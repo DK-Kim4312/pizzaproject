@@ -10,7 +10,7 @@ import Table from './Table';
 import { useParams } from "react-router-dom";
 import About from "./About"
 import Sidebar from "../Sidebar/Sidebar";
-
+import Modal from './Modal'
 
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
         <Route path="/:id" element={<RouteWrapper component={Table} />} />
         <Route path="/about" element={<About/>}></Route>
       </Routes>
+      <Modal/>
     </BrowserRouter>
   );
   function RouteWrapper({ component: Component }) {

@@ -10,6 +10,7 @@
     color: #fff;
     transition: height 0.5s ease;
     overflow: hidden;
+    border-radius: .5rem;
   }
   
   .collapsed {
@@ -20,10 +21,11 @@
     background-color: #555;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 6.2px;
     width: 250px;
     cursor: pointer;
     transition: transform 0.5s ease;
+    align-items: center;
   }
   
   .tabs-content {
@@ -34,6 +36,33 @@
   .tabs {
     display: flex;
     flex-direction: column;
+  }
+  
+  .rounded{
+    border-radius: .3rem;
+    margin-bottom: 2px;
+  }
+
+  .text-big{
+    font-size:1rem;
+    align-items: center;
+  }
+
+  .ingredient-container::-webkit-scrollbar {
+    width: 12px; 
+  }
+  
+  .ingredient-container::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+  
+  .ingredient-container::-webkit-scrollbar-thumb {
+    background: black; 
+    border-radius: 10px;
+  }
+  
+  .ingredient-container::-webkit-scrollbar-thumb:hover {
+    background: darkgrey; 
   }
   
   .tab {
@@ -51,11 +80,15 @@
   
   .content {
     padding: 20px;
+    font-size:.75rem;
   }
   
   .ingredient-container {
     max-height: 600px; /* Adjust the height as needed */
     overflow-y: auto;
+    scrollbar-width: thin; 
+    scrollbar-color: #888 transparent; 
+    scrollbar-width: none;
   }
   
   .ingredient-container label {

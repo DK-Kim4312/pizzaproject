@@ -46,7 +46,7 @@ const Sidebar = () => {
   return (
     <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
       <button className="toggle-btn" onClick={toggleSidebar}>
-        {collapsed ? 'Categories' : 'Categories'}
+        <div className='text-big'>{collapsed ? 'Categories' : 'Categories'}</div>
       </button>
       {!collapsed && (
         <div className="content">
@@ -56,6 +56,7 @@ const Sidebar = () => {
               placeholder="Search..."
               value={searchQuery}
               onChange={handleSearchChange}
+              className='rounded'
             />
             <div className="ingredient-container">
               {filteredIngredients.map((ingredient) => (

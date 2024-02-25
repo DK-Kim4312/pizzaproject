@@ -55,6 +55,7 @@ const markers = [
     { markerOffset: 5, name: "Boston", coordinates: [-71.0589, 42.3601] }
 ];
 
+
 const Map = () => {
     const [alphaValues, setAlphaValues] = useState({});
 
@@ -67,13 +68,7 @@ const Map = () => {
             alphaValues[countryName] = alpha;
         }
     };
-    // const updateAlphaValue = (countryName, alpha) => {
-    //     setAlphaValues((prevValues) => ({
-    //         ...prevValues,
-    //         [countryName]: alpha
-    //     }));
-    // };
-
+    
     useEffect(() => {
         for (const key in map.objects.world.geometries) {
             const geo = map.objects.world.geometries[key];

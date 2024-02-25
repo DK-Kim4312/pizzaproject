@@ -93,7 +93,7 @@ const Map = () => {
             <ComposableMap
                 projection="geoMercator"
             >
-                <ZoomableGroup center={[0, 0]} zoom={.9} minZoom={.8} maxZoom={30}>
+                <ZoomableGroup center={[0, 0]} zoom={1} translateExtent={[[-200, -200], [1000, 800]]}>
                     <Geographies geography={map}>
                         {({ geographies }) =>
                             geographies.map((geo) => (
@@ -121,7 +121,7 @@ const Map = () => {
                             <text
                                 textAnchor="middle"
                                 y={markerOffset}
-                                style={{ fontFamily: "system-ui", fill: "#EDEDED", "fontSize": ".2rem" }}
+                                style={{ fontFamily: "system-ui", fill: "#777777", "fontSize": ".2rem" }}
                             >
                                 {name}
                             </text>

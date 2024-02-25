@@ -1176,7 +1176,7 @@ const States = () => {
 
   return (
     <ComposableMap projection="geoAlbersUsa">
-      <ZoomableGroup center={[0, 0]} zoom={1}>
+      <ZoomableGroup center={[0, 0]} zoom={1} translateExtent={[[-50, -50], [2000, 1600]]}>
         <Geographies geography={geoUrl}>
           {({ geographies }) => (
             <>

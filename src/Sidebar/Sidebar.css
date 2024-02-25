@@ -4,7 +4,7 @@
     position: fixed;
     top: 10px;
     left: 10px;
-    width: 250px;
+    width: 160px;
     height: 90%;
     background-color: #333;
     color: #fff;
@@ -21,11 +21,14 @@
     background-color: #555;
     color: #fff;
     border: none;
-    padding: 6.2px;
-    width: 250px;
+    padding: 4px;
+    width: 100%;
     cursor: pointer;
     transition: transform 0.5s ease;
     align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   }
   
   .tabs-content {
@@ -41,6 +44,7 @@
   .rounded{
     border-radius: .3rem;
     margin-bottom: 2px;
+    width: 80%;
   }
 
   .text-big{
@@ -79,7 +83,7 @@
   }
   
   .content {
-    padding: 20px;
+    padding: 10px;
     font-size:.75rem;
   }
   

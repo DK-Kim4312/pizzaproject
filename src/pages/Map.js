@@ -36,14 +36,14 @@ const markers = [
     { markerOffset: 5, name: "Kinshasa", coordinates: [15.2663, -4.4419] },
     { markerOffset: 5, name: "Lima", coordinates: [-77.0428, -12.0464] },
     { markerOffset: 5, name: "Bangalore", coordinates: [77.5946, 12.9716] },
-    { markerOffset: 5, name: "Lahore", coordinates: [74.3587, 31.5204] },
+    { markerOffset: 5, name: "Dhaka", coordinates: [90.4152, 23.8041] },
     { markerOffset: 5, name: "Bogotá", coordinates: [-74.0721, 4.7110] },
     { markerOffset: 5, name: "Lisbon", coordinates: [-9.1393, 38.7223] },
     { markerOffset: 5, name: "Dubai", coordinates: [55.2708, 25.2048] },
     { markerOffset: 5, name: "Madrid", coordinates: [-3.7038, 40.4168] },
     { markerOffset: 5, name: "Toronto", coordinates: [-79.3832, 43.6532] },
     { markerOffset: 5, name: "Miami", coordinates: [-80.1918, 25.7617] },
-    { markerOffset: 5, name: "Kolkata", coordinates: [88.3639, 22.5726] },
+    { markerOffset: 5, name: "Osaka", coordinates: [135.5023, 34.6937] },
     { markerOffset: 5, name: "Singapore", coordinates: [103.8198, 1.3521] },
     { markerOffset: 5, name: "Hong Kong", coordinates: [114.1694, 22.3193] },
     { markerOffset: 5, name: "Riyadh", coordinates: [46.6753, 24.7136] },
@@ -96,11 +96,10 @@ const Map = () => {
     }
     return (
         <div>
-            <Sidebar />
             <ComposableMap
                 projection="geoMercator"
             >
-                <ZoomableGroup center={[0, 0]} zoom={.9} minZoom={.8} maxZoom={30}>
+                <ZoomableGroup center={[0, 0]} zoom={1} translateExtent={[[-200, -200], [1000, 800]]}>
                     <Geographies geography={map}>
                         {({ geographies }) =>
                             geographies.map((geo) => (
@@ -128,7 +127,7 @@ const Map = () => {
                             <text
                                 textAnchor="middle"
                                 y={markerOffset}
-                                style={{ fontFamily: "system-ui", fill: "#EDEDED", "fontSize": ".2rem" }}
+                                style={{ fontFamily: "system-ui", fill: "#777777", "fontSize": ".2rem" }}
                             >
                                 {name}
                             </text>
@@ -136,6 +135,7 @@ const Map = () => {
                     ))}
                 </ZoomableGroup>
             </ComposableMap>
+            <Sidebar />
             <Key />
         </div>
     )

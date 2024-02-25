@@ -107,7 +107,8 @@ const Sidebar = () => {
      'twenty-year-mortgage-interest-rate',
      'pizza',
      'burger',
-     'big-mac'];
+     'big-mac',
+    "gdp-billions"];
  
  const dataArray = [...xdict];
  
@@ -123,7 +124,7 @@ const ingredients = ['Inexpensive Meal', 'Meal for 2 (3-Course)', 'McMeal', 'Dom
                        'Toyota Corolla Sedan 1.6l 97kW Comfort (Or Equivalent New Car)', 'Basic (Electricity, Heating, Cooling, Water, Garbage) for 85m2 Apartment', '1 min. of Prepaid Mobile Tariff Local (No Discounts or Plans)', 'Internet (60 Mbps or More, Unlimited Data, Cable/ADSL)', 'Fitness Club, Monthly Fee for 1 Adult', 'Tennis Court Rent (1 Hour on Weekend)',
                        'Cinema, International Release, 1 Seat', 'Preschool (or Kindergarten), Full Day, Private, Monthly for 1 Child', 'International Primary School, Yearly for 1 Child', '1 Pair of Jeans (Levis 501 Or Similar)', '1 Summer Dress in a Chain Store (Zara, H&M, ...)', '1 Pair of Nike Running Shoes (Mid-Range)',
                        '1 Pair of Men Leather Business Shoes', 'Apartment (1 Bedroom) in City Center', 'Apartment (1 Bedroom) Outside of Center', 'Apartment (3 Bedrooms) in City Center', 'Apartment (3 Bedrooms) Outside of Center', 'Price per Square Meter to Buy Apartment in City Center',
-                       'Price per Square Meter to Buy Apartment Outside of Center', 'Average Monthly Net Salary (After Tax)', 'Mortage Interest Rate in Percentages, for 20 Years Fixed-Rate', 'Pizza', 'Burger', 'Big Mac'];
+                       'Price per Square Meter to Buy Apartment Outside of Center', 'Average Monthly Net Salary (After Tax)', 'Mortage Interest Rate in Percentages, for 20 Years Fixed-Rate', 'Pizza', 'Burger', 'Big Mac', "GDP in Billions"];
 
   // Create an object to store the linked values
   const linkedValuesByIndex = {};

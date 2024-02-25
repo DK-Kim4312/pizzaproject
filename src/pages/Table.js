@@ -8,7 +8,7 @@ import { xdictArray, ingredientToXdict, xdictToIngredient, uniqueCountries } fro
  * The form is used to select two ingredients and the table area will show the top cities with the highest or lowest price of one ingredient over other.
  * @return {Component} Table component
  */
-function Table () {
+function Table (props) {
     const [sequence, setSequence] = useState([
         ['City', 'Price']
     ]);
@@ -17,6 +17,15 @@ function Table () {
     const [country, setCountry] = useState('all');
 
     // code should fetch from API and update the sequence state if button is clicked
+    console.log("id log " +props.id);
+    useEffect(() => {
+        // Check if props.country is provided and is a valid option
+        if (props.id && uniqueCountries().includes(props.id)) {
+            console.log("id log 2 " +props.id);
+            setCountry(props.id);
+        }
+    }, [props.id]);
+
     function handleButtonClick() {
         fetch(`https://maddata-backend.vercel.app/api/products/${product}/?control=${control}&country=${country}`)
             .then(response => response.json())
@@ -68,7 +77,7 @@ function Table () {
                 </div>
                 <div className="selector">
                     <label htmlFor="country">Country</label>
-                    <select id="country" onChange={(e) => setCountry(e.target.value)}>
+                    <select id="country" value={country} onChange={(e) => setCountry(e.target.value)}>
                         <option value="all">All</option>
                         {
                             uniqueCountries().map((country, index) => (

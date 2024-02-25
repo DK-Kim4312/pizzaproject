@@ -1,7 +1,5 @@
 import { React, useState, useEffect } from "react";
 import { geoCentroid } from "d3-geo";
-import Sidebar from "../Sidebar/Sidebar";
-import Key from "../Key/Key";
 import {
   ComposableMap,
   Geographies,
@@ -12,7 +10,7 @@ import {
 } from "react-simple-maps";
 
 import allStates from "./allstates.json";
-
+import Sidebar from "../Sidebar/Sidebar"
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const markers = [

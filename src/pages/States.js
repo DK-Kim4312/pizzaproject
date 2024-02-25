@@ -1,5 +1,7 @@
 import React from "react";
 import { geoCentroid } from "d3-geo";
+import Sidebar from "../Sidebar/Sidebar";
+import Key from "../Key/Key";
 import {
   ComposableMap,
   Geographies,
@@ -1108,36 +1110,40 @@ const offsets = {
 
 const States = () => {
   return (
-    <ComposableMap projection="geoAlbersUsa">
-      <ZoomableGroup center={[0, 0]} zoom={1}>
-        <Geographies geography={geoUrl}>
-          {({ geographies }) => (
-            <>
-              {geographies.map(geo => (
-                <Geography
-                  key={geo.rsmKey}
-                  stroke="#FFF"
-                  geography={geo}
-                  fill="#DDD"
-                  style={{
-                    default: { outline: "none" },
-                    hover: { outline: "none" },
-                    pressed: { outline: "none" },
-                  }}>
-                  <title>{geo.properties.name}</title>
-                </Geography>
-              ))}
-            </>
-          )}
-        </Geographies>
-        {markers.map(({ name, coordinates, markerOffset }) => (
-          <Marker key={name} coordinates={coordinates}>
-            <circle r={.3} fill="#000000" strokeWidth={.3} />
-            <title>{name}</title>
-          </Marker>
-        ))}
-      </ZoomableGroup>
-    </ComposableMap>
+    <>
+      <Sidebar />
+      <ComposableMap projection="geoAlbersUsa">
+        <ZoomableGroup center={[0, 0]} zoom={1}>
+          <Geographies geography={geoUrl}>
+            {({ geographies }) => (
+              <>
+                {geographies.map(geo => (
+                  <Geography
+                    key={geo.rsmKey}
+                    stroke="#FFF"
+                    geography={geo}
+                    fill="#DDD"
+                    style={{
+                      default: { outline: "none" },
+                      hover: { outline: "none" },
+                      pressed: { outline: "none" },
+                    }}>
+                    <title>{geo.properties.name}</title>
+                  </Geography>
+                ))}
+              </>
+            )}
+          </Geographies>
+          {markers.map(({ name, coordinates, markerOffset }) => (
+            <Marker key={name} coordinates={coordinates}>
+              <circle r={.3} fill="#000000" strokeWidth={.3} />
+              <title>{name}</title>
+            </Marker>
+          ))}
+        </ZoomableGroup>
+      </ComposableMap>
+      <Key/>
+    </>
   );
 };
 

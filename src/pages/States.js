@@ -1155,7 +1155,7 @@ const States = () => {
 
       markers.forEach(({ markerOffset, name, coordinates }) => {
         let spawnCity = true;
-        markers.forEach(({ name: name2, coordinates: coordinates2 }) => {
+        filteredMarkers.forEach(({ name: name2, coordinates: coordinates2 }) => {
             if (name === name2) return;
             if (calculateDistance(coordinates[1], coordinates[0], coordinates2[1], coordinates2[0]) < 10) {
                 spawnCity = false;
@@ -1199,7 +1199,7 @@ const States = () => {
         </Geographies>
         {filteredMarkers.map(({ name, coordinates, markerOffset }) => (
           <Marker key={name} coordinates={coordinates}>
-            <circle r={.6} fill="#000000" strokeWidth={.8} />
+            <circle r={1} fill="#000000" strokeWidth={1} />
             <title>{name}</title>
           </Marker>
         ))}

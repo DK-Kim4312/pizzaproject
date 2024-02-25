@@ -129,7 +129,6 @@ const Map = () => {
                     ))}
                 </ZoomableGroup>
             </ComposableMap>
-            <Key/>
         </div>
     )
 };

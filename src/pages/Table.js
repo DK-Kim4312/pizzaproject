@@ -13,7 +13,7 @@ function Table (props) {
         ['City', 'Price']
     ]);
     const [product, setProduct] = useState('inexpensive-meal');
-    const [control, setControl] = useState('inexpensive-meal');
+    const [control, setControl] = useState('usd');
     const [country, setCountry] = useState('all');
 
     // code should fetch from API and update the sequence state if button is clicked
@@ -68,6 +68,7 @@ function Table (props) {
                 <div className="selector">
                     <label htmlFor="control">Control</label>
                     <select id="control" onChange={(e) => setControl(e.target.value)}>
+                        <option key={0} value="usd">usd</option>
                         {
                             xdictArray().map((xdict, index) => (
                                 <option key={index} value={xdict}>{xdictToIngredient(xdict)}</option>

@@ -9,6 +9,7 @@ import States from './States';
 import Table from './Table';
 import { useParams } from "react-router-dom";
 import About from "./About"
+import Sidebar from "../Sidebar/Sidebar";
 
 
 

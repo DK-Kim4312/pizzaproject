@@ -102,7 +102,7 @@ function Table (props) {
                         {sequence.map((city, index) => (
                             <tr key={index}>
                                 <td>{city[0]}</td>
-                                <td>{city[1]}</td>
+                                <td>{Number(city[1]).toFixed(2)}</td>
                             </tr>
                         ))
 

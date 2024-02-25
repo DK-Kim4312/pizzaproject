@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { geoCentroid } from "d3-geo";
 import Sidebar from "../Sidebar/Sidebar";
 import Key from "../Key/Key";
@@ -16,8 +16,6 @@ import allStates from "./allstates.json";
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const markers = [
-  { "markerOffset": 5, "name": "New York", "coordinates": [-74.0060, 40.7128] },
-  { "markerOffset": 5, "name": "Los Angeles", "coordinates": [-118.2437, 34.0522] },
   { "markerOffset": 5, "name": "New York", "coordinates": [-74.0060, 40.7128] },
   { "markerOffset": 5, "name": "Los Angeles", "coordinates": [-118.2437, 34.0522] },
   { "markerOffset": 5, "name": "Chicago", "coordinates": [-87.6298, 41.8781] },
@@ -1092,9 +1090,6 @@ const markers = [
   { "markerOffset": 5, "name": "Bulverde", "coordinates": [-98.4521, 29.7457] },
   { "markerOffset": 5, "name": "Iola", "coordinates": [-95.4023, 37.9232] }
 ];
-// const markers = [  
-
-// ]
 
 const offsets = {
   VT: [50, -8],
@@ -1109,42 +1104,76 @@ const offsets = {
 };
 
 const States = () => {
-  return (
-    <>
-      <Sidebar />
-      <ComposableMap projection="geoAlbersUsa">
-        <ZoomableGroup center={[0, 0]} zoom={1}>
-          <Geographies geography={geoUrl}>
-            {({ geographies }) => (
-              <>
-                {geographies.map(geo => (
-                  <Geography
-                    key={geo.rsmKey}
-                    stroke="#FFF"
-                    geography={geo}
-                    fill="#DDD"
-                    style={{
-                      default: { outline: "none" },
-                      hover: { outline: "none" },
-                      pressed: { outline: "none" },
-                    }}>
-                    <title>{geo.properties.name}</title>
-                  </Geography>
-                ))}
-              </>
-            )}
-          </Geographies>
-          {markers.map(({ name, coordinates, markerOffset }) => (
-            <Marker key={name} coordinates={coordinates}>
-              <circle r={.3} fill="#000000" strokeWidth={.3} />
-              <title>{name}</title>
-            </Marker>
-          ))}
-        </ZoomableGroup>
-      </ComposableMap>
-      <Key/>
-    </>
-  );
+  const [alphaValues, setAlphaValues] = useState({});
+
+  const updateAlphaValue = (stateName, alpha) => {
+    if (alphaValues[stateName] != null) {
+      setAlphaValues((prevValues) => ({
+        ...prevValues, [stateName]: alpha
+      }));
+    } else {
+      alphaValues[stateName] = alpha;
+    }
+  };
+
+  useEffect(() => {
+    fetch(geoUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            data.objects.states.geometries.forEach(geometry => {
+                updateAlphaValue(geometry.properties.name, 0);
+            });
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
+    window.setAlphaValues = setAlphaValues;
+    window.updateAlphaValue = updateAlphaValue;
+    window.alphaValues = alphaValues;
+}, []);
+
+return (
+  <>
+  <Sidebar/>
+  <ComposableMap projection="geoAlbersUsa">
+    <ZoomableGroup center={[0, 0]} zoom={1}>
+      <Geographies geography={geoUrl}>
+        {({ geographies }) => (
+          <>
+            {geographies.map(geo => (
+              <Geography
+                key={geo.rsmKey}
+                stroke="#FFF"
+                geography={geo}
+                fill={`rgb(42,53,77,${(alphaValues[geo.properties.name] * .8) + .2})`}
+                style={{
+                  default: { outline: "none" },
+                  hover: { outline: "none" },
+                  pressed: { outline: "none" },
+                }}>
+                <title>{geo.properties.name}</title>
+              </Geography>
+            ))}
+          </>
+        )}
+      </Geographies>
+      {markers.map(({ name, coordinates, markerOffset }) => (
+        <Marker key={name} coordinates={coordinates}>
+          <circle r={.3} fill="#000000" strokeWidth={.3} />
+          <title>{name}</title>
+        </Marker>
+      ))}
+    </ZoomableGroup>
+  </ComposableMap>
+        <Key/>
+        </>
+);
 };
 
 export default States;

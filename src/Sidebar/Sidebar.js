@@ -150,9 +150,7 @@ const Sidebar = () => {
 
   return (
     <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
-      <button className="toggle-btn" onClick={toggleSidebar}>
-        <div className='text-big'>{collapsed ? 'Categories' : 'Categories'}</div>
-      </button>
+      <div className='text-big'>{collapsed ? 'Categories' : 'Categories'}</div>
       {!collapsed && (
         <div className="content">
           <div className="ingredient-list">
@@ -163,6 +161,7 @@ const Sidebar = () => {
               onChange={handleSearchChange}
               className='rounded'
             />
+            <button onClick={handleSubmit} className='custom-button'>Submit</button>
             <div className="ingredient-container">
               {filteredIngredients.map((ingredient) => (
                 <label key={ingredient}>
@@ -176,7 +175,6 @@ const Sidebar = () => {
               ))}
             </div>
           </div>
-          <button onClick={handleSubmit} className='custom-button'>Submit</button>
         </div>
       )}
     </div>
